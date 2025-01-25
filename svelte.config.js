@@ -1,8 +1,7 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { loadEnv } from 'vite';
 
-const env = loadEnv(import.meta.env.MODE || 'development', process.cwd(), '');
+console.log(import.meta.env);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -17,7 +16,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: env.PUBLIC_BASE_PATH || ''
+			base: !process.argv.includes('dev') ? '/svelte-aframe' : ''
 		}
 	}
 };
