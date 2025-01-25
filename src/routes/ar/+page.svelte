@@ -148,10 +148,17 @@
 			vr-mode-ui="enabled: false"
 			loading-screen="enabled: false"
 			renderer="antialias: true;"
-			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true; detectionMode: mono; trackingMethod: best; areaThreshold: 0.1; patternRatio: 0.75;"
 		>
-			<a-marker preset="hiro">
-				<a-box position="0 0.5 0" material="color: red;"></a-box>
+			<a-marker 
+				preset="hiro"
+				emitEvents="true"
+				on:markerFound={() => addDebug('Marker found!')}
+				on:markerLost={() => addDebug('Marker lost!')}
+			>
+				<!-- Add a simple red box and a text label for visibility -->
+				<a-box position="0 0.5 0" material="color: red;" scale="1 1 1"></a-box>
+				<a-text value="Marker Detected!" position="0 1 0" align="center" color="white" scale="2 2 2"></a-text>
 			</a-marker>
 
 			<a-entity camera></a-entity>
