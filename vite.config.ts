@@ -3,6 +3,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
 	return {
-		plugins: [sveltekit()]
+		plugins: [sveltekit()],
+		server: {
+			allowedHosts: ['.ngrok-free.app']
+		}
 	};
 });
