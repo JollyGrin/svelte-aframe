@@ -9,9 +9,11 @@
 </svelte:head>
 
 <div class="grid h-screen w-screen place-items-center">
-	<p>AR Demo</p>
+	<div>
+		<p>AR Demo</p>
 
-	<a href="/ar">
-		<button> AR </button>
-	</a>
+		<a href="/ar">
+			<button class="bg-gray-300 p-4"> AR </button>
+		</a>
+	</div>
 </div>
