@@ -30,6 +30,7 @@
 
 		// Wait for A-Frame to initialize
 		const scene = document.querySelector('a-scene');
+		//@ts-ignore: from docs
 		if (scene?.hasLoaded) {
 			sceneLoaded = true;
 		} else {
@@ -42,6 +43,8 @@
 	function closeInstructions() {
 		showInstructions = false;
 	}
+
+	const PATTERN_HREF = '/pattern-marker.png';
 </script>
 
 <svelte:head>
@@ -60,7 +63,7 @@
 				<li>Allow camera access when prompted</li>
 				<li>
 					Find a Hiro marker (shown below) or <a
-						href="https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker.png"
+						href={PATTERN_HREF}
 						target="_blank"
 						class="text-blue-600 hover:underline">download it here</a
 					>
@@ -68,14 +71,10 @@
 				<li>Point your camera at the marker</li>
 				<li>A red cube should appear floating above the marker</li>
 			</ol>
-			<img
-				src="https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker.png"
-				alt="Hiro Marker"
-				class="mx-auto mb-6 h-32 w-32"
-			/>
+			<img src={PATTERN_HREF} alt="Hiro Marker" class="mx-auto mb-6 h-32 w-32" />
 			<button
 				class="w-full rounded bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
-				on:click={closeInstructions}
+				onclick={closeInstructions}
 			>
 				Got it!
 			</button>
