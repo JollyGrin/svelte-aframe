@@ -11,6 +11,10 @@
 
 	async function checkCameraAvailability() {
 		try {
+			// Explicitly request camera permission
+			const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+			stream.getTracks().forEach(track => track.stop()); // Stop the stream after permission check
+			
 			const devices = await navigator.mediaDevices.enumerateDevices();
 			const videoDevices = devices.filter((device) => device.kind === 'videoinput');
 			hasCamera = videoDevices.length > 0;
